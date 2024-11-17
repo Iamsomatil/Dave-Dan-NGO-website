@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Saint David and Daniel Initiative</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .about-header {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 60px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("./images/background\ image.jpg") center/cover;
+        color: white;
+      }
+
+      .about-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        animation: fadeInDown 1s ease;
+      }
+
+      .about-header p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+        animation: fadeInUp 1s ease;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .about-text {
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .about-text:hover {
+        transform: translateY(-5px);
+      }
+
+      .about-text h2 {
+        color: #ffa500;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .about-text p {
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .mission-values {
+        background: #f5f5f5;
+        padding: 40px;
+        border-radius: 10px;
+        margin-top: 40px;
+      }
+
+      .mission-values h2 {
+        color: #ffa500;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .value-item {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .value-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .value-item h3 {
+        color: #ffa500;
+        margin-bottom: 15px;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about-header h1 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="about-header">
+      <div class="container">
+        <h1>About Saint David and Daniel Initiative</h1>
+        <p>Empowering Communities, Transforming Lives</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Who We Are</h2>
+          <p>
+            Saint David and Daniel Caring Hearts Network Initiative is a
+            non-profit organization dedicated to making a positive impact in
+            communities across Nigeria. Founded with a vision of creating
+            lasting change, we work tirelessly to improve lives through various
+            initiatives and programs.
+          </p>
+          <p>
+            Our team consists of passionate individuals who believe in the power
+            of community service and sustainable development.
+          </p>
+        </div>
+        <div class="about-text">
+          <h2>Our Impact</h2>
+          <p>
+            Since our inception, we have touched countless lives through our
+            various programs and initiatives. We believe in sustainable
+            development and creating lasting positive change in communities.
+          </p>
+          <p>
+            Through partnerships with local communities and organizations, we
+            have implemented successful programs in education, healthcare, and
+            community development.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission-values">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+          <div class="value-item">
+            <h3>Integrity</h3>
+            <p>
+              We maintain the highest standards of integrity in all our actions
+              and decisions.
+            </p>
+          </div>
+          <div class="value-item">
+            <h3>Compassion</h3>
+            <p>
+              We approach our work with empathy and understanding for those we
+              serve.
+            </p>
+          </div>
+          <div class="value-item">
+            <h3>Excellence</h3>
+            <p>
+              We strive for excellence in everything we do to create lasting
+              impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
