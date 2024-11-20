@@ -123,8 +123,10 @@
             message: document.getElementById("message").value
           };
 
+          console.log("Sending form data:", formData);
+
           try {
-            const response = await fetch("http://localhost:3000/contact", {
+            const response = await fetch("http://localhost:5501/contact", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

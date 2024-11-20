@@ -35,12 +35,13 @@ const transporter = nodemailer.createTransport({
 
 // Contact form endpoint
 app.post("/contact", async (req, res) => {
+  console.log("Received contact form data:", req.body);
   const { name, email, subject, message } = req.body;
 
   // Email content
   const mailOptions = {
     from: `"${name}" <${email}>`,
-    to: "stdavdancaringinitiative@gmail.com",
+    to: "stdavdancaringheartsinitiative@gmail.com",
     replyTo: email,
     subject: `New Contact Form Submission: ${subject}`,
     html: `
