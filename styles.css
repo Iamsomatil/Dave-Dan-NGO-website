@@ -332,7 +332,6 @@
   }
 }
 
-/* Make it responsive */
 @media (max-width: 1024px) {
   .logo {
     font-size: 20px;
@@ -356,7 +355,6 @@
   margin: 0 auto;
 }
 
-/* New Scrollable Media Grid */
 .media-grid {
   display: flex;
   gap: 15px;
@@ -384,7 +382,7 @@
 }
 
 .media-item {
-  flex: 0 0 300px; /* Fixed width for each item */
+  flex: 0 0 300px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -393,7 +391,6 @@
   transition: transform 0.3s ease;
 }
 
-/* Add navigation buttons */
 .media-nav {
   display: flex;
   justify-content: center;
@@ -488,12 +485,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Optional: Add some padding-top to account for fixed header */
 #news-media {
-  scroll-margin-top: 80px; /* Adjust this value based on your header height */
+  scroll-margin-top: 80px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
   .logo {
     font-size: 16px;

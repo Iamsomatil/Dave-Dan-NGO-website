@@ -1,17 +1,22 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const axios = require('axios');
+const axios = require("axios");
 
 const app = express();
 
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:5500", "http://127.0.0.1:5500", "http://localhost:5501", "http://127.0.0.1:5501"],
+    origin: [
+      "http://localhost:5500",
+      "http://127.0.0.1:5500",
+      "http://localhost:5501",
+      "http://127.0.0.1:5501",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -71,7 +76,11 @@ app.post("/contact", async (req, res) => {
 app.post("/initialize-payment", async (req, res) => {
   try {
     console.log("Payment initialization request received:", req.body);
-    const { amount, email = "donor@example.com", name = "Anonymous Donor" } = req.body;
+    const {
+      amount,
+      email = "donor@example.com",
+      name = "Anonymous Donor",
+    } = req.body;
 
     const payload = {
       tx_ref: "STDAVDAN-" + Date.now(),
@@ -81,30 +90,30 @@ app.post("/initialize-payment", async (req, res) => {
       redirect_url: "http://localhost:5500/donation-success.html",
       meta: {
         consumer_id: 23,
-        consumer_mac: "92a3-912ba-1192a"
+        consumer_mac: "92a3-912ba-1192a",
       },
       customer: {
         email: email,
         phonenumber: "080****4528",
-        name: name
+        name: name,
       },
       customizations: {
         title: "St. DAVDAN Initiatives Donation",
         description: "Donation to support our cause",
-        logo: "http://localhost:5500/images/footer%20logo.jpg"
-      }
+        logo: "http://localhost:5500/images/footer%20logo.jpg",
+      },
     };
 
     console.log("Sending payload to Flutterwave:", payload);
-    
+
     const response = await axios.post(
-      'https://api.flutterwave.com/v3/payments',
+      "https://api.flutterwave.com/v3/payments",
       payload,
       {
         headers: {
-          'Authorization': `Bearer ${process.env.FLW_SECRET_KEY}`,
-          'Content-Type': 'application/json',
-        }
+          Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`,
+          "Content-Type": "application/json",
+        },
       }
     );
 
@@ -116,17 +125,17 @@ app.post("/initialize-payment", async (req, res) => {
 
     res.status(200).json({
       success: true,
-      authorization_url: response.data.data.link
+      authorization_url: response.data.data.link,
     });
   } catch (error) {
     console.error("Detailed payment error:", {
       message: error.message,
       stack: error.stack,
-      response: error.response?.data
+      response: error.response?.data,
     });
     res.status(500).json({
       success: false,
-      message: "Payment initialization failed: " + error.message
+      message: "Payment initialization failed: " + error.message,
     });
   }
 });
@@ -136,31 +145,31 @@ app.post("/webhook", async (req, res) => {
   try {
     const secretHash = process.env.FLW_SECRET_HASH;
     const signature = req.headers["verif-hash"];
-    
+
     // Verify the webhook signature
-    if (!signature || (signature !== secretHash)) {
+    if (!signature || signature !== secretHash) {
       return res.status(401).json({
-        success: false, 
-        message: "Invalid webhook signature"
+        success: false,
+        message: "Invalid webhook signature",
       });
     }
 
     const payload = req.body;
-    
+
     // Verify the transaction
     const response = await flw.Transaction.verify({ id: payload.data.id });
-    
+
     if (response.data.status === "successful") {
-      // Handle successful payment (e.g., update database, send email)
+      // Handle successful payment
       console.log("Payment verified successfully:", response.data);
     }
 
-    res.status(200).json({success: true});
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error("Webhook error:", error);
     res.status(500).json({
-      success: false, 
-      message: "Webhook processing failed"
+      success: false,
+      message: "Webhook processing failed",
     });
   }
 });
@@ -170,21 +179,21 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/test-flutterwave", (req, res) => {
-    try {
-        if (!flw || !flw.Payment) {
-            throw new Error("Flutterwave not properly initialized");
-        }
-        res.json({
-            success: true,
-            message: "Flutterwave initialized successfully",
-            publicKey: process.env.FLW_PUBLIC_KEY.substring(0, 10) + "..." // Only show part of the key for security
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: error.message
-        });
+  try {
+    if (!flw || !flw.Payment) {
+      throw new Error("Flutterwave not properly initialized");
     }
+    res.json({
+      success: true,
+      message: "Flutterwave initialized successfully",
+      publicKey: process.env.FLW_PUBLIC_KEY.substring(0, 10) + "...", // Only show part of the key for security
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 });
 
 const PORT = process.env.PORT || 3000;
