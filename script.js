@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollLeftBtn = document.getElementById("scrollLeft");
   const scrollRightBtn = document.getElementById("scrollRight");
 
-  const scrollAmount = 300; // Width of one item
+  const scrollAmount = 300; // 
 
   scrollLeftBtn.addEventListener("click", () => {
     mediaGrid.scrollBy({
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Optional: Keyboard navigation
+  
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") scrollLeftBtn.click();
     if (e.key === "ArrowRight") scrollRightBtn.click();
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
           throw new Error("Cannot connect to server. Please try again later.");
         }
 
-        // If server is reachable, proceed with payment
+        
         const response = await fetch(
           "http://localhost:5501/initialize-payment",
           {

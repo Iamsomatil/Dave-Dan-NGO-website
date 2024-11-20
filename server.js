@@ -29,7 +29,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "stdavdancaringheartsinitiative@gmail.com",
-    pass: "smti zwax zkmg kwfu",
+    pass: "smti zwax zkmq kwfu",
   },
 });
 
