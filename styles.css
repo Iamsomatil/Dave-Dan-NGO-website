@@ -42,7 +42,7 @@
 }
 
 .logo img {
-  height: 50px; /* Adjust this value to match your needs */
+  height: 50px;
   width: auto;
   object-fit: contain;
 }
@@ -91,7 +91,7 @@
 }
 
 .donate-btn:hover {
-  background: #ff8c00;
+  background: #2363cb;
   transform: translateY(-2px);
 }
 
