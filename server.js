@@ -12,10 +12,10 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "https://stdavdan.org",
+      "https://www.stdavdan.org",
       "http://localhost:5500",
-      "http://127.0.0.1:5500",
-      "http://localhost:5501",
-      "http://127.0.0.1:5501",
+      "http://localhost:5501"
     ],
     methods: ["GET", "POST"],
     credentials: true,
@@ -28,8 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "stdavdancaringheartsinitiative@gmail.com",
-    pass: "smti zwax zkmq kwfu",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -88,7 +88,7 @@ app.post("/initialize-payment", async (req, res) => {
       amount: amount,
       currency: "NGN",
       payment_options: "card",
-      redirect_url: "http://localhost:5500/donation-success.html",
+      redirect_url: `${process.env.PRODUCTION_URL}/donation-success.html`,
       meta: {
         consumer_id: 23,
         consumer_mac: "92a3-912ba-1192a",

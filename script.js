@@ -90,4 +90,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  const BACKEND_URL = 'https://your-render-backend-url.onrender.com';
+
+  // Your contact form submission code
+  fetch(`${BACKEND_URL}/contact`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
 });
