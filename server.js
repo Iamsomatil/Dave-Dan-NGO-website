@@ -14,6 +14,7 @@ app.use(
     origin: [
       "https://stdavdan.org",
       "https://www.stdavdan.org",
+      "https://stdavdan.onrender.com",
       "http://localhost:5500",
       "http://localhost:5501"
     ],

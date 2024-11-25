@@ -116,6 +116,8 @@
         .addEventListener("submit", async (e) => {
           e.preventDefault();
 
+          const BACKEND_URL = 'https://stdavdan.onrender.com';
+
           const formData = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
@@ -126,7 +128,7 @@
           console.log("Sending form data:", formData);
 
           try {
-            const response = await fetch("http://localhost:5501/contact", {
+            const response = await fetch(`${BACKEND_URL}/contact`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

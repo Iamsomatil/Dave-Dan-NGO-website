@@ -13,8 +13,16 @@ services:
         sync: false
       - key: EMAIL_PASSWORD
         sync: false
-      - key: CORS_ORIGIN
+      - key: FRONTEND_URL
         value: https://stdavdan.org
+      - key: PRODUCTION_URL
+        value: https://stdavdan.org
+      - key: FLW_PUBLIC_KEY
+        sync: false
+      - key: FLW_SECRET_KEY
+        sync: false
+      - key: FLW_SECRET_HASH
+        sync: false
     headers:
       - path: /*
         name: Access-Control-Allow-Origin
