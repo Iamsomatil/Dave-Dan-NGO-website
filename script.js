@@ -2,9 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const mediaGrid = document.querySelector(".media-grid");
   const scrollLeftBtn = document.getElementById("scrollLeft");
   const scrollRightBtn = document.getElementById("scrollRight");
+  const mediaItems = document.querySelectorAll(".media-item");
 
   const scrollAmount = 300; // 
 
+  // Create modal backdrop
+  const modalBackdrop = document.createElement('div');
+  modalBackdrop.classList.add('modal-backdrop');
+  document.body.appendChild(modalBackdrop);
+
+  // Scroll buttons functionality
   scrollLeftBtn.addEventListener("click", () => {
     mediaGrid.scrollBy({
       left: -scrollAmount,
@@ -19,7 +26,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  
+  // Handle media item clicks
+  mediaItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Toggle active state
+      const isActive = item.classList.contains('active');
+      
+      // Remove active class from all items
+      mediaItems.forEach(i => i.classList.remove('active'));
+      modalBackdrop.classList.remove('active');
+      
+      if (!isActive) {
+        item.classList.add('active');
+        modalBackdrop.classList.add('active');
+      }
+    });
+  });
+
+  // Close modal when clicking outside
+  modalBackdrop.addEventListener('click', () => {
+    mediaItems.forEach(item => item.classList.remove('active'));
+    modalBackdrop.classList.remove('active');
+  });
+
+  // Show/hide navigation buttons based on scroll position
+  const updateNavButtons = () => {
+    const { scrollLeft, scrollWidth, clientWidth } = mediaGrid;
+    
+    scrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
+    scrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth - 10 ? '1' : '0.5';
+  };
+
+  mediaGrid.addEventListener('scroll', updateNavButtons);
+  window.addEventListener('resize', updateNavButtons);
+  updateNavButtons();
+
+  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") scrollLeftBtn.click();
     if (e.key === "ArrowRight") scrollRightBtn.click();
