@@ -199,9 +199,10 @@ body {
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
-  pointer-events: auto;
   text-decoration: none;
   display: inline-block;
+  position: relative;
+  z-index: 1;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
 }
@@ -210,6 +211,7 @@ body {
   background: #ff8c00;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 165, 0, 0.3);
+  color: white;
 }
 
 /* Stats Section */
