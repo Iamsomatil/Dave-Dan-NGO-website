@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollRightBtn = document.getElementById("scrollRight");
   const mediaItems = document.querySelectorAll(".media-item");
 
-  const scrollAmount = 300; // 
+  const scrollAmount = 300; //
 
   // Create modal backdrop
-  const modalBackdrop = document.createElement('div');
-  modalBackdrop.classList.add('modal-backdrop');
+  const modalBackdrop = document.createElement("div");
+  modalBackdrop.classList.add("modal-backdrop");
   document.body.appendChild(modalBackdrop);
 
   // Scroll buttons functionality
@@ -27,38 +27,39 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Handle media item clicks
-  mediaItems.forEach(item => {
-    item.addEventListener('click', () => {
+  mediaItems.forEach((item) => {
+    item.addEventListener("click", () => {
       // Toggle active state
-      const isActive = item.classList.contains('active');
-      
+      const isActive = item.classList.contains("active");
+
       // Remove active class from all items
-      mediaItems.forEach(i => i.classList.remove('active'));
-      modalBackdrop.classList.remove('active');
-      
+      mediaItems.forEach((i) => i.classList.remove("active"));
+      modalBackdrop.classList.remove("active");
+
       if (!isActive) {
-        item.classList.add('active');
-        modalBackdrop.classList.add('active');
+        item.classList.add("active");
+        modalBackdrop.classList.add("active");
       }
     });
   });
 
   // Close modal when clicking outside
-  modalBackdrop.addEventListener('click', () => {
-    mediaItems.forEach(item => item.classList.remove('active'));
-    modalBackdrop.classList.remove('active');
+  modalBackdrop.addEventListener("click", () => {
+    mediaItems.forEach((item) => item.classList.remove("active"));
+    modalBackdrop.classList.remove("active");
   });
 
   // Show/hide navigation buttons based on scroll position
   const updateNavButtons = () => {
     const { scrollLeft, scrollWidth, clientWidth } = mediaGrid;
-    
-    scrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
-    scrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth - 10 ? '1' : '0.5';
+
+    scrollLeftBtn.style.opacity = scrollLeft > 0 ? "1" : "0.5";
+    scrollRightBtn.style.opacity =
+      scrollLeft < scrollWidth - clientWidth - 10 ? "1" : "0.5";
   };
 
-  mediaGrid.addEventListener('scroll', updateNavButtons);
-  window.addEventListener('resize', updateNavButtons);
+  mediaGrid.addEventListener("scroll", updateNavButtons);
+  window.addEventListener("resize", updateNavButtons);
   updateNavButtons();
 
   // Keyboard navigation
@@ -67,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "ArrowRight") scrollRightBtn.click();
   });
 
-  // Add payment handler for donate buttons
   const donateButtons = document.querySelectorAll(".donate-btn");
   const donationInput = document.querySelector(".donation-input");
 
@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
           throw new Error("Cannot connect to server. Please try again later.");
         }
 
-        
         const response = await fetch(
           "http://localhost:5501/initialize-payment",
           {
@@ -133,14 +132,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const BACKEND_URL = 'https://your-render-backend-url.onrender.com';
+  const BACKEND_URL = "https://your-render-backend-url.onrender.com";
 
   // Your contact form submission code
   fetch(`${BACKEND_URL}/contact`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
-  })
+  });
 });

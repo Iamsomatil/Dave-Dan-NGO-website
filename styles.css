@@ -199,6 +199,7 @@ body {
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
+  pointer-events: auto;
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s ease;
