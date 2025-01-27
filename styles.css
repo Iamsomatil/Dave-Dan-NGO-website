@@ -149,7 +149,6 @@ body {
   color: white;
   padding: 0 20px;
   position: relative;
-  overflow: hidden;
 }
 
 .hero::before {
@@ -161,6 +160,13 @@ body {
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
   animation: pulse 2s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero h1, .hero p, .hero .cta-btn {
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes pulse {
@@ -179,7 +185,6 @@ body {
   font-size: 3.5rem;
   margin-bottom: 20px;
   max-width: 800px;
-  position: relative;
   animation: slideIn 1s ease-out;
 }
 
@@ -187,7 +192,6 @@ body {
   font-size: 1.3rem;
   margin-bottom: 30px;
   max-width: 600px;
-  position: relative;
   animation: fadeIn 1.5s ease-out;
 }
 
@@ -202,7 +206,7 @@ body {
   text-decoration: none;
   display: inline-block;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 165, 0, 0.2);
 }
