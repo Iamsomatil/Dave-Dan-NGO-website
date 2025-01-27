@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
 }
 
 :root {
@@ -153,7 +153,7 @@ body {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -164,9 +164,15 @@ body {
 }
 
 @keyframes pulse {
-  0% { opacity: 0.3; }
-  50% { opacity: 0.5; }
-  100% { opacity: 0.3; }
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.3;
+  }
 }
 
 .hero h1 {
@@ -267,7 +273,7 @@ body {
 .bank-details {
   margin-bottom: 20px;
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: #ffa500;
   border-radius: 5px;
 }
 
